@@ -1,3 +1,3 @@
 <x-nav-register>
-    Page de Connexion
+    Page d'inscription
 </x-nav-register>

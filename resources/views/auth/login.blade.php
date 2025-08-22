@@ -1,3 +1,3 @@
-<x-nav-login>
+<x-layout-login>
     Page de Connexion
-</x-nav-login>
+</x-layout-login>

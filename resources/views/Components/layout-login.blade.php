@@ -5,13 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
-    <!-- Styles / Scripts -->
-    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @else
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <script src="{{ asset('js/app.js') }}" defer></script>
-    @endif
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 <body class="min-h-screen flex items-center justify-center bg-gray-50">
     <div class="px-6 py-12 w-full max-w-lg content-center rounded-xl shadow-xl">
@@ -21,22 +16,22 @@
         </div>
 
         <div class="mt-10 w-full">
-            <form action="" method="POST" class="space-y-6">
+            <form action="{{ route('login') }}" method="POST" class="space-y-6">
                 @csrf
                 <div>
                     <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
                     <input id="email" type="email" name="email" required autocomplete="email"
-                        class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+                        class="bg-gray-100 border border-indigo-600 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
 
                     <label for="password" class="block text-sm/6 font-medium text-gray-900 mt-4">Password</label>
                     <input id="password" type="password" name="password" required autocomplete="current-password"
-                        class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+                        class="bg-gray-100 border border-indigo-600 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
                 </div>
 
                 <div class="flex items-center justify-between mt-2">
                     <div></div>
                     <div class="text-sm">
-                        <a href="/register" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+                        <a href="/auth/register" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
                     </div>
                 </div>
 
@@ -51,8 +46,6 @@
                 <a href="/auth/register" class="font-semibold text-indigo-600 hover:text-indigo-500">Register</a>
             </p>
             <p class="mt-2 text-center text-sm/6 text-gray-500">
-                Not a member?
-                <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Start a 14 day free trial</a>
             </p>
         </div>
     </div>

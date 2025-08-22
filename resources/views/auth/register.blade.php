@@ -1,3 +1,3 @@
-<x-nav-register>
+<x-layout-register>
     Page d'inscription
-</x-nav-register>
+</x-layout-register>

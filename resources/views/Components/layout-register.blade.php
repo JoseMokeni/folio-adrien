@@ -6,13 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Registration</title>
-    <!-- Styles / Scripts -->
-    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @else
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <script src="{{ asset('js/app.js') }}" defer></script>
-    @endif
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 
 <body class="min-h-screen flex items-center justify-center bg-gray-50">
@@ -23,27 +18,27 @@
         </div>
 
         <div class="mt-10 w-full">
-            <form action="" method="POST" class="space-y-6">
+            <form action="{{ route ('register') }}" method="POST" class="space-y-6">
                 @csrf
 
                 <div>
                     <label for="name" class="block text-sm/6 font-medium text-gray-900">Name</label>
                     <input type="text" id="name" name="name"
-                        class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        class="bg-gray-100 border border-indigo-600 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="John" required />
                     <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
                     <input id="email" type="email" name="email" required autocomplete="email"
-                        class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+                        class="bg-gray-100 border border-indigo-600 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
 
                     <label for="password" class="block text-sm/6 font-medium text-gray-900">Password</label>
                     <input id="password" type="password" name="password" required autocomplete="current-password"
-                        class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+                        class="bg-gray-100 border border-indigo-600 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
 
                     <label for="password_confirmation" class="block text-sm/6 font-medium text-gray-900">Confirm
                         Password</label>
                     <input id="password_confirmation" type="password" name="password_confirmation" required
                         autocomplete="current-password"
-                        class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+                        class="bg-gray-100 border border-indigo-600 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
                 </div>
 
                 <div class="mt-6">

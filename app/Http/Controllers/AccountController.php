@@ -13,7 +13,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        // return the index view
+       return view( 'account.index'); // return the index view
 
         // flow: Get from database, assign to an array, render view
     }

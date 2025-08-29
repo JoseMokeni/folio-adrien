@@ -17,12 +17,14 @@ class LoginController extends Controller
     // Affiche la page du login
 
 
-    public function showLoginForm() {
+    public function showLoginForm()
+    {
         return view('auth.login');
     }
 
     //Récupérer le login depuis le formulaire
-    public function login() {
+    public function login()
+    {
         $attributes = request()->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
@@ -38,9 +40,7 @@ class LoginController extends Controller
         Log::info($user);
         if (!($user && Hash::check($attributes['password'], $user->password))) {
             Log::info('User login attempt', ['email' => $email, 'success' => false]);
-            return redirect()->back()->withErrors([
-                'credentials' => 'Désolé cette combinaison est inéxistante'
-            ])->withInput();
+            return redirect()->back()->with('error', 'Désolé cette combinaison est inéxistante');
         }
 
         Log::info('User login attempt', ['email' => $email, 'success' => true]);
@@ -51,10 +51,10 @@ class LoginController extends Controller
     }
 
     //Se  déconnecter
-    public function logout() {
+    public function logout()
+    {
         Auth::logout();
 
         return redirect('/auth/login');
     }
 }
-

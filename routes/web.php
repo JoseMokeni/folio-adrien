@@ -10,6 +10,11 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 
 
+Route::get('/', function(){
+
+    return view ('welcome');
+});
+
 Route::middleware('not-authenticated')->group(function () {
     Route::get('auth/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('auth/login', [LoginController::class, 'login']);

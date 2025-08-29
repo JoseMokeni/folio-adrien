@@ -13,12 +13,20 @@
 <body class="min-h-screen flex items-center justify-center bg-gray-50">
     <div class="px-6 py-12 w-full max-w-lg content-center rounded-xl shadow-xl">
         <div class="w-full">
-            <img src="/images/image.png" alt="Your Company" class="mx-auto h-10 w-auto" />
+          <img src="https://images.unsplash.com/photo-1565373672895-04a86f4f366d?auto=format&fit=crop&w=300&q=80"
+     alt="Gestion des finances"
+     class="mx-auto h-20 w-auto" />
+
+
             <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">{{ $slot }}</h2>
         </div>
 
+        @if (session('error'))
+            <div class ="mt-4 text-red-600 text-center">{{ session('error') }}</div>
+        @endif
+
         <div class="mt-10 w-full">
-            <form action="{{ route ('register') }}" method="POST" class="space-y-6">
+            <form action="{{ route('register') }}" method="POST" class="space-y-6">
                 @csrf
 
                 <div>
@@ -50,11 +58,6 @@
             <p class="mt-10 text-center text-sm/6 text-gray-500">
                 Already have an account?
                 <a href="/auth/login" class="font-semibold text-indigo-600 hover:text-indigo-500">Sign in</a>
-            </p>
-            <p class="mt-2 text-center text-sm/6 text-gray-500">
-                Not a member?
-                <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Start a 14 day free
-                    trial</a>
             </p>
         </div>
     </div>

@@ -17,18 +17,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //return the index view
-        $catgories = Category::where('user_id', Auth::id())->get();
-        return view('category.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //return the create view
-        return view ('category.create');
+         $categories = Category::whereNull('user_id')
+                                     ->orWhere('user_id', Auth::id())->paginate(6);
+        return view('category.index',compact ('categories'));
     }
 
     /**
@@ -38,13 +29,11 @@ class CategoryController extends Controller
     {
         //handle create form submission
 
-        $request = request()->validate([
-            'name' => 'required|string|max:255',
-        ]);
+        $data = $request->validated();
 
         Category::create([
-            'name' => $request->name ,
-            'user_id' => auth::id(), // Assuming you want to associate the category with the authenticated user
+            'name' => $data['name'] ,
+            'user_id' => Auth::id(), // Assuming you want to associate the category with the authenticated user
         ]);
 
         return redirect()->route('category.index')->with('success', 'Categorie créer avec succès.');
@@ -57,9 +46,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         //
-        if ($category->user_id != null && $category->user_id != Auth::id()){
-            abort(403, 'Action interdite' );
-        }
+        $this->authorize('view',$category);
 
         return view('category.show', compact('category'));
     }
@@ -69,10 +56,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //display category
-
         $this->authorize('update', $category);
-        return view('category.edit', compact ('category'));
+        return view('category.edit', compact('category'));
     }
 
     /**
@@ -81,12 +66,10 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         //update the specified resource in storage
-        $request = request()->validate([
-            'name' => 'required|string|max:255'
-        ]);
+        $data = $request->validated();
 
         $category->update([
-            'name' => $request->name ,
+            'name' => $data['name'],
         ]);
 
         return redirect()->route('category.index')->with('success', 'Categorie mise à jour avec succès.');
@@ -98,9 +81,12 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         // delete the category
-        $this->authorize('delete',  $category);
-        $category->delete();
+        $user = Auth::user();
+        if ($user->can('delete', $category)) {
+            $category->delete();
+            return redirect()->route('category.index')->with('success', 'Categorie supprimée avec succès.');
+        }
 
-        return redirect()->route ('category.index')->with('success', 'Categorie supprimée avec succès.');
+        return redirect()->route('category.index')->with('error', 'Vous n\'êtes pas autorisé à supprimer cette catégorie.');
     }
 }

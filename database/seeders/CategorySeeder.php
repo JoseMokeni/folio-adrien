@@ -13,25 +13,24 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        //
         $categories = [
-            'name' => 'Nourriture et Boissons',
-            'name' => 'Achats',
-            'name' => 'Logement',
-            'name' => 'Transport',
-            'name' => 'Vie et Divertissements',
-            'name' => 'Depenses Financières',
-            'name' => 'Revenus',
-            'name' => 'Investissements',
-            'name' => 'Autres',
+            'Nourriture et Boissons',
+            'Transport',
+            'Logement',
+            'Santé',
+            'Divertissement',
+            'Éducation',
+            'Shopping',
+            'Voyages',
+            'Services',
+            'Autres'
         ];
 
         foreach($categories as $cat){
             Category::create([
-                'name' => $cat ,
-                'user_id' => null ,
+                'name' => $cat,
+                'user_id' => null,
             ]);
         }
-
     }
 }

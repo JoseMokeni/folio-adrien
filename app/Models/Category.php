@@ -11,10 +11,10 @@ class Category extends Model
     use HasFactory;
 
     protected $table = 'categories';
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'user_id'];
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class );
     }
 }

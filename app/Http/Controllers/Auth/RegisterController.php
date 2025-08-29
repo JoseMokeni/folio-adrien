@@ -35,6 +35,20 @@ class RegisterController extends Controller
 
         $user = User::create($attributes);
 
+        // Add default categories for the new user
+        $defaultCategories = [
+            'Nourriture et Boissons',
+            'Transport',
+            'Logement',
+            // ...other categories...
+        ];
+        foreach ($defaultCategories as $catName) {
+            \App\Models\Category::create([
+                'name' => $catName,
+                'user_id' => $user->id,
+            ]);
+        }
+
         Auth::login($user);
         $request->session()->regenerate();
         // Redirect to dashboard after registration

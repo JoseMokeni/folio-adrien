@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ExpenseTracker - {{ $title ?? 'Dashboard' }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -111,20 +113,40 @@
                     },
                     keyframes: {
                         fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                            '0%': {
+                                opacity: '0',
+                                transform: 'translateY(10px)'
+                            },
+                            '100%': {
+                                opacity: '1',
+                                transform: 'translateY(0)'
+                            }
                         },
                         slideIn: {
-                            '0%': { opacity: '0', transform: 'translateX(-10px)' },
-                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                            '0%': {
+                                opacity: '0',
+                                transform: 'translateX(-10px)'
+                            },
+                            '100%': {
+                                opacity: '1',
+                                transform: 'translateX(0)'
+                            }
                         },
                         bounceGentle: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-5px)' }
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-5px)'
+                            }
                         },
                         glow: {
-                            '0%': { boxShadow: '0 0 5px rgba(59, 130, 246, 0.2)' },
-                            '100%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.6)' }
+                            '0%': {
+                                boxShadow: '0 0 5px rgba(59, 130, 246, 0.2)'
+                            },
+                            '100%': {
+                                boxShadow: '0 0 20px rgba(59, 130, 246, 0.6)'
+                            }
                         }
                     }
                 },
@@ -137,15 +159,18 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+
         .card-hover {
             transition: all 0.3s ease;
         }
+
         .card-hover:hover {
             transform: translateY(-4px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
+
 <body class="bg-gradient-to-br from-secondary-50 via-primary-50 to-accent-50 min-h-screen font-sans">
     <div class="min-h-screen flex flex-col">
 
@@ -153,72 +178,66 @@
         <nav class="glass-morphism sticky top-0 z-50 border-b border-white/10">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex h-16 items-center justify-between">
-                    <!-- Logo -->
-                    <div class="flex items-center space-x-3">
-                        <div class="p-2 rounded-xl bg-gradient-to-r from-primary-500 to-accent-500 shadow-glow">
-                            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h1 class="text-lg font-bold bg-gradient-to-r from-secondary-800 to-primary-600 bg-clip-text text-transparent">
-                                ExpenseTracker
-                            </h1>
-                            <p class="text-xs text-secondary-500 -mt-1">Finance Manager</p>
-                        </div>
-                    </div>
+
+                    <img class="w-32 text-white" src="/images/logo.png" alt="Logo">
+
 
                     <!-- Desktop Menu -->
                     <div class="hidden md:flex space-x-1">
                         <a href="{{ route('dashboard') }}"
-                           class="group relative rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300
+                            class="group relative rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300
                            {{ request()->routeIs('dashboard') ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md' : 'text-secondary-700 hover:bg-white/50 hover:shadow-soft' }}">
-                           <span class="relative z-10 flex items-center space-x-2">
-                               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/>
-                               </svg>
-                               <span>Dashboard</span>
-                           </span>
+                            <span class="relative z-10 flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
+                                </svg>
+                                <span>Dashboard</span>
+                            </span>
                         </a>
                         <a href="{{ route('account.index') }}"
-                           class="group relative rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300
+                            class="group relative rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300
                            {{ request()->routeIs('account.*') ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md' : 'text-secondary-700 hover:bg-white/50 hover:shadow-soft' }}">
-                           <span class="relative z-10 flex items-center space-x-2">
-                               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1"/>
-                               </svg>
-                               <span>Comptes</span>
-                           </span>
+                            <span class="relative z-10 flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1" />
+                                </svg>
+                                <span>Comptes</span>
+                            </span>
                         </a>
                         <a href="{{ route('movement.index') }}"
-                           class="group relative rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300
+                            class="group relative rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300
                            {{ request()->routeIs('movement.*') ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md' : 'text-secondary-700 hover:bg-white/50 hover:shadow-soft' }}">
-                           <span class="relative z-10 flex items-center space-x-2">
-                               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
-                               </svg>
-                               <span>Transactions</span>
-                           </span>
+                            <span class="relative z-10 flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                                </svg>
+                                <span>Transactions</span>
+                            </span>
                         </a>
                         <a href="{{ route('category.index') }}"
-                           class="group relative rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300
+                            class="group relative rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300
                            {{ request()->routeIs('category.*') ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md' : 'text-secondary-700 hover:bg-white/50 hover:shadow-soft' }}">
-                           <span class="relative z-10 flex items-center space-x-2">
-                               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
-                               </svg>
-                               <span>Catégories</span>
-                           </span>
+                            <span class="relative z-10 flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                                </svg>
+                                <span>Catégories</span>
+                            </span>
                         </a>
                         <a href="{{ route('import.create') }}"
-                           class="group relative rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300
+                            class="group relative rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300
                            {{ request()->routeIs('import.*') ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md' : 'text-secondary-700 hover:bg-white/50 hover:shadow-soft' }}">
-                           <span class="relative z-10 flex items-center space-x-2">
-                               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"/>
-                               </svg>
-                               <span>Import</span>
-                           </span>
+                            <span class="relative z-10 flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                                </svg>
+                                <span>Import</span>
+                            </span>
                         </a>
                     </div>
 
@@ -231,11 +250,12 @@
                         <form action="{{ route('logout') }}" method="POST" class="inline">
                             @csrf
                             <button type="submit"
-                                    class="group relative rounded-xl bg-gradient-to-r from-danger-500 to-danger-600 px-4 py-2.5 text-sm font-medium text-white
+                                class="group relative rounded-xl bg-gradient-to-r from-danger-500 to-danger-600 px-4 py-2.5 text-sm font-medium text-white
                                     shadow-md hover:shadow-lg hover:from-danger-600 hover:to-danger-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-danger-400 focus:ring-offset-2">
                                 <span class="flex items-center space-x-2">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                                     </svg>
                                     <span>Déconnexion</span>
                                 </span>
@@ -245,9 +265,12 @@
 
                     <!-- Mobile Hamburger -->
                     <div class="md:hidden">
-                        <button id="menu-btn" class="inline-flex items-center justify-center p-2 rounded-xl text-secondary-600 hover:bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary-400 transition-all duration-300">
-                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <button id="menu-btn"
+                            class="inline-flex items-center justify-center p-2 rounded-xl text-secondary-600 hover:bg-white/50 focus:outline-none focus:ring-2 focus:ring-primary-400 transition-all duration-300">
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" />
                             </svg>
                         </button>
                     </div>
@@ -255,35 +278,46 @@
             </div>
 
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="md:hidden hidden glass-morphism border-t border-white/10 shadow-lg transition-all duration-300 ease-in-out">
+            <div id="mobile-menu"
+                class="md:hidden hidden glass-morphism border-t border-white/10 shadow-lg transition-all duration-300 ease-in-out">
                 <div class="px-4 py-3 space-y-2">
-                    <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 rounded-xl px-3 py-3 text-sm font-medium transition-all duration-300 {{ request()->routeIs('dashboard') ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md' : 'text-secondary-700 hover:bg-white/50' }}">
+                    <a href="{{ route('dashboard') }}"
+                        class="flex items-center space-x-3 rounded-xl px-3 py-3 text-sm font-medium transition-all duration-300 {{ request()->routeIs('dashboard') ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md' : 'text-secondary-700 hover:bg-white/50' }}">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
                         </svg>
                         <span>Dashboard</span>
                     </a>
-                    <a href="{{ route('account.index') }}" class="flex items-center space-x-3 rounded-xl px-3 py-3 text-sm font-medium transition-all duration-300 {{ request()->routeIs('account.*') ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md' : 'text-secondary-700 hover:bg-white/50' }}">
+                    <a href="{{ route('account.index') }}"
+                        class="flex items-center space-x-3 rounded-xl px-3 py-3 text-sm font-medium transition-all duration-300 {{ request()->routeIs('account.*') ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md' : 'text-secondary-700 hover:bg-white/50' }}">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1" />
                         </svg>
                         <span>Comptes</span>
                     </a>
-                    <a href="{{ route('movement.index') }}" class="flex items-center space-x-3 rounded-xl px-3 py-3 text-sm font-medium transition-all duration-300 {{ request()->routeIs('movement.*') ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md' : 'text-secondary-700 hover:bg-white/50' }}">
+                    <a href="{{ route('movement.index') }}"
+                        class="flex items-center space-x-3 rounded-xl px-3 py-3 text-sm font-medium transition-all duration-300 {{ request()->routeIs('movement.*') ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md' : 'text-secondary-700 hover:bg-white/50' }}">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
                         </svg>
                         <span>Transactions</span>
                     </a>
-                    <a href="{{ route('category.index') }}" class="flex items-center space-x-3 rounded-xl px-3 py-3 text-sm font-medium transition-all duration-300 {{ request()->routeIs('category.*') ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md' : 'text-secondary-700 hover:bg-white/50' }}">
+                    <a href="{{ route('category.index') }}"
+                        class="flex items-center space-x-3 rounded-xl px-3 py-3 text-sm font-medium transition-all duration-300 {{ request()->routeIs('category.*') ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md' : 'text-secondary-700 hover:bg-white/50' }}">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
                         </svg>
                         <span>Catégories</span>
                     </a>
-                    <a href="{{ route('import.create') }}" class="flex items-center space-x-3 rounded-xl px-3 py-3 text-sm font-medium transition-all duration-300 {{ request()->routeIs('import.*') ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md' : 'text-secondary-700 hover:bg-white/50' }}">
+                    <a href="{{ route('import.create') }}"
+                        class="flex items-center space-x-3 rounded-xl px-3 py-3 text-sm font-medium transition-all duration-300 {{ request()->routeIs('import.*') ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md' : 'text-secondary-700 hover:bg-white/50' }}">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
                         </svg>
                         <span>Import</span>
                     </a>
@@ -297,9 +331,10 @@
                         <form action="{{ route('logout') }}" method="POST" class="mt-2">
                             @csrf
                             <button type="submit"
-                                    class="w-full flex items-center justify-center space-x-2 rounded-xl bg-gradient-to-r from-danger-500 to-danger-600 px-3 py-3 text-sm font-medium text-white shadow-md hover:shadow-lg transition-all duration-300">
+                                class="w-full flex items-center justify-center space-x-2 rounded-xl bg-gradient-to-r from-danger-500 to-danger-600 px-3 py-3 text-sm font-medium text-white shadow-md hover:shadow-lg transition-all duration-300">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                                 </svg>
                                 <span>Déconnexion</span>
                             </button>
@@ -315,8 +350,11 @@
             <div class="absolute inset-0 bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600"></div>
             <!-- Animated background pattern -->
             <div class="absolute inset-0 opacity-10">
-                <div class="absolute top-0 left-0 w-96 h-96 bg-gradient-radial from-white to-transparent rounded-full -translate-x-1/2 -translate-y-1/2 animate-bounce-gentle"></div>
-                <div class="absolute bottom-0 right-0 w-96 h-96 bg-gradient-radial from-white to-transparent rounded-full translate-x-1/2 translate-y-1/2 animate-bounce-gentle" style="animation-delay: 1s"></div>
+                <div
+                    class="absolute top-0 left-0 w-96 h-96 bg-gradient-radial from-white to-transparent rounded-full -translate-x-1/2 -translate-y-1/2 animate-bounce-gentle">
+                </div>
+                <div class="absolute bottom-0 right-0 w-96 h-96 bg-gradient-radial from-white to-transparent rounded-full translate-x-1/2 translate-y-1/2 animate-bounce-gentle"
+                    style="animation-delay: 1s"></div>
             </div>
 
             <div class="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
@@ -363,12 +401,15 @@
                     <div class="flex flex-col lg:flex-row items-center justify-between space-y-4 lg:space-y-0">
                         <div class="flex items-center space-x-4">
                             <div class="p-2 rounded-xl bg-gradient-to-r from-primary-500 to-accent-500">
-                                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+                                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                                 </svg>
                             </div>
                             <div>
-                                <span class="text-sm font-medium text-secondary-800">&copy; {{ date('Y') }} ExpenseTracker Pro</span>
+                                <span class="text-sm font-medium text-secondary-800">&copy; {{ date('Y') }}
+                                    ExpenseTracker Pro</span>
                                 <p class="text-xs text-secondary-500">Votre assistant financier personnel</p>
                             </div>
                         </div>
@@ -376,10 +417,11 @@
                         <div class="flex items-center space-x-6">
                             <div class="flex items-center space-x-2">
                                 <span class="text-sm text-secondary-600">Développé avec</span>
-                                <svg class="w-5 h-5 text-danger-500 animate-bounce-gentle" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-5 h-5 text-danger-500 animate-bounce-gentle" fill="currentColor"
+                                    viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
-                                          d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                          clip-rule="evenodd" />
+                                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                        clip-rule="evenodd" />
                                 </svg>
                                 <span class="text-sm font-medium text-secondary-700">par Paul Adrien</span>
                             </div>
@@ -436,4 +478,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -1,52 +1,70 @@
 <x-layout-login>
-    <div class="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-        <div class="sm:mx-auto sm:w-full sm:max-w-md">
-            <img class="mx-auto h-16 w-auto drop-shadow-xl" src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="Logo">
-            <h2 class="mt-6 text-center text-4xl font-bold tracking-tight text-white">Bienvenue</h2>
-            <p class="mt-2 text-center text-sm text-white/80">
-                Ou
-                <a href="{{ route('register') }}" class="font-medium text-white hover:text-white/90 underline decoration-2 decoration-white/30 hover:decoration-white/70">
-                    créer un nouveau compte
-                </a>
-            </p>
+    <!-- Carte principale -->
+    <div class="relative z-10 w-full max-w-md glass-morphism border border-white/10 p-8">
+        <!-- Logo simplifié -->
+        <div class="flex justify-center mb-8">
+
+                <img class="w-32 text-white" src="/images/logo.png" alt="Logo">
         </div>
 
-        <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-            <div class="bg-white/10 backdrop-blur-lg py-8 px-4 shadow-2xl rounded-2xl border border-white/20 sm:px-10">
-                <form class="space-y-6" action="{{ route('login') }}" method="POST">
-                    @csrf
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-white">Adresse email</label>
-                        <div class="mt-1 relative group">
-                            <input id="email" name="email" type="email" required
-                                class="block w-full bg-white/5 rounded-lg border border-white/10 px-4 py-3 text-white placeholder-white/50 shadow-sm backdrop-blur-sm focus:border-white/30 focus:ring-2 focus:ring-white/30 sm:text-sm"
-                                placeholder="nom@exemple.com">
-                        </div>
-                        @error('email')
-                            <p class="mt-2 text-sm text-red-200">{{ $message }}</p>
-                        @enderror
-                    </div>
+        <!-- En-tête -->
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold text-white mb-2">Connexion</h1>
+            <p class="text-white/70 text-sm">Accédez à votre tableau de bord</p>
+        </div>
 
-                    <div>
-                        <label for="password" class="block text-sm font-medium text-white">Mot de passe</label>
-                        <div class="mt-1">
-                            <input id="password" name="password" type="password" required
-                                class="block w-full bg-white/5 rounded-lg border border-white/10 px-4 py-3 text-white placeholder-white/50 shadow-sm backdrop-blur-sm focus:border-white/30 focus:ring-2 focus:ring-white/30 sm:text-sm"
-                                placeholder="••••••••">
-                        </div>
-                        @error('password')
-                            <p class="mt-2 text-sm text-red-200">{{ $message }}</p>
-                        @enderror
-                    </div>
+        <!-- Formulaire -->
+        <form action="{{ route('login') }}" method="POST" class="space-y-6">
+            @csrf
 
-                    <div>
-                        <button type="submit"
-                            class="flex w-full justify-center rounded-lg bg-white py-3 px-4 text-sm font-semibold text-indigo-600 shadow-sm hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/30 transition duration-200">
-                            Se connecter
-                        </button>
-                    </div>
-                </form>
+            <!-- Email -->
+            <div>
+                <label for="email" class="block text-sm font-medium text-white/90 mb-2">Email</label>
+                <input type="email" name="email" id="email" required autofocus value="{{ old('email') }}"
+                    class="w-full rounded-xl bg-white/10 border border-white/20 px-4 py-3 text-white
+                    placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 focus:bg-white/15 transition-all duration-300"
+                    placeholder="votre@email.com">
+                @error('email')
+                    <p class="text-red-300 text-sm mt-1">{{ $message }}</p>
+                @enderror
             </div>
+
+            <!-- Mot de passe -->
+            <div>
+                <label for="password" class="block text-sm font-medium text-white/90 mb-2">Mot de passe</label>
+                <input type="password" name="password" id="password" required
+                    class="w-full rounded-xl bg-white/10 border border-white/20 px-4 py-3 text-white
+                    placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 focus:bg-white/15 transition-all duration-300"
+                    placeholder="••••••••">
+                @error('password')
+                    <p class="text-red-300 text-sm mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <!-- Remember me -->
+            <div class="flex items-center">
+                <input type="checkbox" name="remember" id="remember"
+                    class="h-4 w-4 rounded bg-white/10 border-white/20 text-indigo-500 focus:ring-indigo-500 focus:ring-offset-0">
+                <label for="remember" class="ml-2 text-sm text-white/80">Se souvenir de moi</label>
+            </div>
+
+            <!-- Bouton de connexion -->
+            <button type="submit"
+                class="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold
+                hover:from-indigo-600 hover:to-purple-700 transform hover:scale-[1.02] transition-all duration-300
+                focus:outline-none focus:ring-2 focus:ring-white/30 shadow-lg">
+                Se connecter
+            </button>
+        </form>
+
+        <!-- Lien d'inscription -->
+        <div class="text-center mt-8 pt-6 border-t border-white/10">
+            <p class="text-white/70 text-sm">
+                Pas encore de compte ?
+                <a href="{{ route('register') }}" class="text-white font-semibold hover:text-indigo-300 transition-colors duration-300 ml-1">
+                    Créer un compte
+                </a>
+            </p>
         </div>
     </div>
 </x-layout-login>

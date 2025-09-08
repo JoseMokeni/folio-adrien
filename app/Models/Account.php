@@ -9,4 +9,19 @@ class Account extends Model
 {
     /** @use HasFactory<\Database\Factories\AccountFactory> */
     use HasFactory;
+
+    protected $table = 'accounts';
+
+    protected $fillable = ['name', 'balance', 'currency', 'user_id'];
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class );
+    }
+
+    public function movements()
+    {
+        return $this->hasMany(Movement::class, 'account_id');
+    }
 }

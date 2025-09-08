@@ -18,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
          $categories = Category::whereNull('user_id')
-                                     ->orWhere('user_id', Auth::id())->paginate(6);
+                                     ->orWhere('user_id', Auth::id())->orderBy('created_at', 'desc')->paginate(6);
         return view('category.index',compact ('categories'));
     }
 

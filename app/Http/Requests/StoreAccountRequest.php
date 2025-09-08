@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Account;
 
 class StoreAccountRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreAccountRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('create', Account::class);
     }
 
     /**
@@ -22,7 +23,9 @@ class StoreAccountRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'balance' => 'required|numeric|min:0',
+            'currency' => 'required|string|max:3',
         ];
     }
 }

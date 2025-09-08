@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Movement;
 
 class StoreMovementRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreMovementRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('create', Movement::class);
     }
 
     /**
@@ -22,7 +23,12 @@ class StoreMovementRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'label' => 'required|string|max:255',
+            'description' => 'nullable|string|max:255',
+            'amount' => 'required|numeric|min:0',
+            'nature' => 'required|in:income,expense',
+            'account_id' => 'required|exists:accounts,id',
+            'category_id' => 'nullable|exists:categories,id',
         ];
     }
 }

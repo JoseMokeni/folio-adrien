@@ -17,7 +17,16 @@ class MovementFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'label' => $this->faker->word(),
+            'description' => $this->faker->word(),
+            'amount' => $this->faker->randomFloat(2, 0, 1000),
+            'nature' => $this->faker->randomElement(['income', 'expense']),
+            'user_id' => \App\Models\User::factory(),
+            'category_id' => \App\Models\Category::factory(),
+            'account_id' => \App\Models\Account::factory(),
+            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+
         ];
     }
 }

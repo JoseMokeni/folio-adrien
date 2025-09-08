@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('movements', function (Blueprint $table) {
             $table->id();
-             $table->string('label');
+            $table->string('label');
             $table->text('description')->nullable();
             $table->decimal('amount', 15, 2);
-            $table->enum ('nature', ['expense', 'income']);
+            $table->enum('nature', ['expense', 'income']);
             $table->foreignId('user_id')->onDelete('cascade');
-            $table->foreignId('category_id')->onDelete('cascade');
+            $table->foreignId('category_id')->onDelete('cascade')->nullable();
             $table->foreignId('account_id')->onDelete('cascade');
             $table->timestamps();
         });

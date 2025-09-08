@@ -15,6 +15,11 @@ class Category extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class );
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function movements()
+    {
+        return $this->hasMany(Movement::class, 'category_id');
     }
 }

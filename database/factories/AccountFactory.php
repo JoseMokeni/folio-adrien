@@ -17,7 +17,11 @@ class AccountFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->word(),
+            'balance' => $this->faker->randomFloat(2, 0, 10000),
+            'user_id' => \App\Models\User::factory(),
+            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];
     }
 }

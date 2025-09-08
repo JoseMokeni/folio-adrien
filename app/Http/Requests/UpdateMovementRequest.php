@@ -11,7 +11,7 @@ class UpdateMovementRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('update', $this->route('movement'));
     }
 
     /**
@@ -22,7 +22,12 @@ class UpdateMovementRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'label' => 'required|string|max:255',
+            'description' => 'nullable|string|max:255',
+            'amount' => 'required|numeric|min:0',
+            'nature' => 'required|in:income,expense',
+            'account_id' => 'required|exists:accounts,id',
+            'category_id' => 'required|exists:categories,id',
         ];
     }
 }

@@ -21,7 +21,7 @@ class MovementPolicy
      */
     public function view(User $user, Movement $movement): bool
     {
-        return false;
+        return $user->id == $movement->user_id;
     }
 
     /**
@@ -29,7 +29,7 @@ class MovementPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -37,7 +37,7 @@ class MovementPolicy
      */
     public function update(User $user, Movement $movement): bool
     {
-        return false;
+        return $user->id == $movement->user_id;
     }
 
     /**
@@ -45,7 +45,7 @@ class MovementPolicy
      */
     public function delete(User $user, Movement $movement): bool
     {
-        return false;
+        return $user->id == $movement->user_id;
     }
 
     /**
@@ -53,7 +53,7 @@ class MovementPolicy
      */
     public function restore(User $user, Movement $movement): bool
     {
-        return false;
+        return $user->id == $movement->user_id;
     }
 
     /**
@@ -61,6 +61,6 @@ class MovementPolicy
      */
     public function forceDelete(User $user, Movement $movement): bool
     {
-        return false;
+        return $user->id == $movement->user_id;
     }
 }

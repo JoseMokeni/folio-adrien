@@ -12,9 +12,15 @@ use App\Http\Controllers\MovementController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\ImportationController;
 use App\Http\Controllers\CSVExportController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LandingController;
+
+// Landing page route
+Route::get('/', [LandingController::class, 'index'])->middleware('not-authenticated')->name('landing');
 
 
-Route::redirect('/', '/dashboard', 301);
+
+
 
 Route::middleware('not-authenticated')->group(function () {
     Route::get('auth/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -24,11 +30,11 @@ Route::middleware('not-authenticated')->group(function () {
     Route::post('auth/register', [RegisterController::class, 'register']);
 });
 
-// Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-// Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 
-// Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-// Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
 //déconnexion
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -43,6 +49,8 @@ Route::middleware('auth')->group(function () {
     Route::get('import', [ImportController::class, 'create'])->name('import.create');
 
     Route::get('/export/movements/csv', [CSVExportController::class, 'exportMovementsCSV'])
-    ->name('movements.export.csv');
+        ->name('movements.export.csv');
 
+        Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile.index');
+        Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });

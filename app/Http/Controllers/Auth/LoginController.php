@@ -30,8 +30,8 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        Log::info('Login attempt', ['email' => $attributes['email']]);
-        Log::info('Login attempt', ['password' => $attributes['password']]);
+       // Log::info('Login attempt', ['email' => $attributes['email']]);
+        //Log::info('Login attempt', ['password' => $attributes['password']]);
 
         $email = $attributes['email'];
 

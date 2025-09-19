@@ -65,7 +65,7 @@
         </div>
 
         <!-- Enhanced Accounts Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:w-4/5 md:mx-auto">
             @forelse ($accounts as $account)
                 <div class="card-hover glass-morphism rounded-3xl p-6 relative overflow-hidden group border border-white/10">
                     <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-primary-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

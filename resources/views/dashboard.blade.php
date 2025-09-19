@@ -19,9 +19,6 @@
                         <p class="text-sm font-medium text-secondary-600 mb-1">Transactions ce mois</p>
                         <div class="flex items-baseline space-x-2">
                             <p class="text-3xl font-bold text-secondary-900">{{ $movements->count() }}</p>
-                            <span class="text-xs font-medium text-success-600 bg-success-100 px-2 py-1 rounded-full">
-                                +12%
-                            </span>
                         </div>
                         <p class="text-xs text-secondary-500 mt-1">vs mois dernier</p>
                     </div>
@@ -45,9 +42,6 @@
                                 $accountsCount = auth()->user()->accounts()->count();
                             @endphp
                             <p class="text-3xl font-bold text-success-600">{{ $accountsCount }}</p>
-                            <span class="text-xs font-medium text-success-600 bg-success-100 px-2 py-1 rounded-full">
-                                Actif{{ $accountsCount > 1 ? 's' : '' }}
-                            </span>
                         </div>
                         <p class="text-xs text-secondary-500 mt-1">Comptes configurés</p>
                     </div>
@@ -159,9 +153,9 @@
                             <div class="flex items-center gap-4">
                                 <div class="text-right">
                                     <span class="text-xl font-bold {{ $movement->nature === 'income' ? 'text-success-600' : 'text-danger-600' }}">
-                                        {{ $movement->nature === 'income' ? '+' : '-' }}{{ number_format($movement->amount, 2) }} €
+                                        {{ $movement->nature === 'income' ? '+' : '-' }}{{ number_format($movement->amount, 2) }} {{ strtoupper($movement->account->currency) }}
                                     </span>
-                                    <p class="text-xs text-secondary-500 mt-1">{{ strtoupper($movement->account->currency) }}</p>
+
                                 </div>
                                 <svg class="h-5 w-5 text-secondary-400 group-hover:text-primary-500 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />

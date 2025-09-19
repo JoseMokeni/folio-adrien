@@ -66,5 +66,13 @@
                 </a>
             </p>
         </div>
+
+        <!-- Lien mot de passe oublié -->
+        <div class="text-center mt-4">
+            <p class="text-white/70 text-sm">
+                <a href="{{ route('password.request') }}" class="text-white font-semibold hover:text-indigo-300 transition-colors duration-300">
+                    Mot de passe oublié ?
+                </a>
+            </p>
     </div>
 </x-layout-login>

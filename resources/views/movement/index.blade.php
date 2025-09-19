@@ -75,7 +75,7 @@
                     <div>
                         <p class="text-sm font-medium text-secondary-600">Catégories</p>
                         <p class="text-2xl font-bold text-accent-600">
-                            {{ $movements->pluck('category_id')->unique()->count() }}
+                            {{ $movements->whereNotNull('category_id')->pluck('category_id')->unique()->count() }}
                         </p>
                         <p class="text-xs text-secondary-500 mt-1">utilisées</p>
                     </div>

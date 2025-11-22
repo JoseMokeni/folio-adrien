@@ -11,6 +11,8 @@ services:
     networks:
       - traefik-public
       - default
+    env_file:
+      - .env
     depends_on:
       - db
   db:
@@ -24,7 +26,7 @@ services:
       - db_data:/var/lib/postgresql/data
     networks:
       - default
-      
+
 volumes:
   db_data:
 

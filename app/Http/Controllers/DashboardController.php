@@ -16,7 +16,6 @@ class DashboardController extends Controller
     {
         $movements = Movement::where('user_id', Auth::id())
             ->with('account', 'category')
-            ->orderBy('date', 'desc')
             ->latest()
             ->get();
 

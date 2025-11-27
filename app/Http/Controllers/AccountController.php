@@ -74,7 +74,7 @@ class AccountController extends Controller
     {
         // display a single account
         $this->authorize('view', $account);
-        $movements = $account->movements()->latest(5)->get();
+        $movements = $account->movements()->latest()->take(5)->get();
         return view('account.show', compact('account', 'movements'));
     }
 

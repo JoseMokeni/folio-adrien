@@ -52,9 +52,13 @@ COPY --chown=www:www . .
 # Copy vendor AFTER (to avoid overwriting)
 COPY --from=dependencies /var/www/html/vendor ./vendor
 
+# Regenerate autoloader and clear any cached config
+RUN composer dump-autoload --optimize --no-dev
+
 # Remove non-production files
 RUN rm -rf docker/ .git .env.example README.md CLAUDE.md \
     tests/ phpunit.xml node_modules/ \
+    bootstrap/cache/*.php \
     && mkdir -p storage/logs storage/framework/{cache,sessions,views} bootstrap/cache \
     && chown -R www:www storage bootstrap/cache \
     && chmod -R 755 storage bootstrap/cache \
